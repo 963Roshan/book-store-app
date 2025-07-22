@@ -1,0 +1,39 @@
+.toolbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FFE619;
+  padding: 18px 15%;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.icon-links {
+  display: flex;
+  gap: 20px;
+}
+
+.icon {
+  color: #191817;
+  font-size: 1.8rem;
+  text-decoration: none;
+}
+
+.icon:hover {
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .toolbar-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10%;
+  }
+
+  .icon-links {
+    margin-top: 10px;
+  }
+}

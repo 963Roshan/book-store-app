@@ -1,0 +1,32 @@
+.banner-container {
+  text-align: center;
+  padding: 80px 20px;
+  background-color: white;  /* fallback solid background */
+  color: black;
+  border-radius: 8px;
+  height: 100vh;
+}
+
+.banner-heading {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.banner-description {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.explore-button {
+  background-color: #ff6f61;
+  color: black;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.explore-button:hover {
+  background-color: #f37676;
+}
