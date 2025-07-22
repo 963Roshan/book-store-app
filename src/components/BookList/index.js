@@ -1,12 +1,12 @@
 import { Component } from "react";
 
-class Home extends Component{
+class BookList extends Component{
     render(){
         return(
             <div>
-                <h1>Home page</h1>
+                <h1>BookList</h1>
             </div>
         )
     }
 }
-export default Home;
+export default BookList;
