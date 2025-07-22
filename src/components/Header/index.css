@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: #FFE619;
-  padding: 18px 15%;
+  padding: 20px 15%;
 }
 
 .logo {
@@ -16,24 +16,37 @@
   gap: 20px;
 }
 
-.icon {
+.icon-link {
   color: #191817;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   text-decoration: none;
 }
 
-.icon:hover {
+.icon-link:hover {
   color: #555;
 }
 
-@media (max-width: 768px) {
-  .toolbar-container {
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 10%;
+.d-none {
+  display: none;
+}
+
+.d-xl-inline {
+  display: none;
+}
+
+.d-xl-none {
+  display: inline;
+}
+
+/* For XL and up */
+@media (min-width: 1200px) {
+  .d-xl-inline {
+    display: inline !important;
+    font-size: 1rem;
+    font-weight: 500;
   }
 
-  .icon-links {
-    margin-top: 10px;
+  .d-xl-none {
+    display: none !important;
   }
 }

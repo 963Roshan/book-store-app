@@ -10,9 +10,20 @@ class Header extends Component {
         <div className="logo">📚 BookStore</div>
 
         <div className="icon-links">
-          <Link to="/" className="icon"><FaHome title="Home" /></Link>
-          <Link to="/books" className="icon"><FaBook title="Books" /></Link>
-          <Link to="/cart" className="icon"><FaShoppingCart title="Cart" /></Link>
+          <Link to="/" className="icon-link">
+            <FaHome className="d-xl-none" />
+            <span className="d-none d-xl-inline">Home</span>
+          </Link>
+
+          <Link to="/books" className="icon-link">
+            <FaBook className="d-xl-none" />
+            <span className="d-none d-xl-inline">Books</span>
+          </Link>
+
+          <Link to="/cart" className="icon-link">
+            <FaShoppingCart className="d-xl-none" />
+            <span className="d-none d-xl-inline">Cart</span>
+          </Link>
         </div>
       </div>
     );
