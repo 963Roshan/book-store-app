@@ -1,0 +1,25 @@
+.search-input-container {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 40px 10px 12px;
+  border: 2px solid black;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #000;
+  background-color: #fff;
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: black;
+  pointer-events: none;
+}

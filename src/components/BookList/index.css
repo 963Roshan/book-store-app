@@ -1,0 +1,39 @@
+.booklist-main-container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  font-family: sans-serif;
+}
+
+.search-box-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin: 16px 0;
+}
+
+.search-box {
+  width: 30%;
+}
+
+.content-row {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.left-panel {
+  width: 30%;
+}
+
+.right-panel {
+  width: 70%;
+}
+
+.book-items-container {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
