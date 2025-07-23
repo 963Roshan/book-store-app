@@ -22,28 +22,38 @@ class BookList extends Component {
   }
 
   componentDidMount() {
-    this.fetchBooks('react')
+    this.fetchBooks()
   }
 
-  fetchBooks = async searchTerm => {
+  fetchBooks = async (query = '') => {
     this.setState({ apiStatus: apiStatusConstants.inProgress })
+
+    const url = query.trim()
+      ? `https://api.itbook.store/1.0/search/${query}`
+      : 'https://api.itbook.store/1.0/new'
+
     try {
-      const response = await fetch(`https://api.itbook.store/1.0/search/${searchTerm}`)
+      const response = await fetch(url)
+      const data = await response.json()
+
       if (response.ok) {
-        const data = await response.json()
-        const formattedBooks = data.books.map(book => ({
+        const books = data.books || []
+        const updatedBooks = books.map(book => ({
           title: book.title,
           subtitle: book.subtitle,
           isbn13: book.isbn13,
           price: book.price,
           image: book.image,
-          url: book.url,
         }))
-        this.setState({ booksList: formattedBooks, apiStatus: apiStatusConstants.success })
+
+        this.setState({
+          booksList: updatedBooks,
+          apiStatus: apiStatusConstants.success,
+        })
       } else {
         this.setState({ apiStatus: apiStatusConstants.failure })
       }
-    } catch (error) {
+    } catch {
       this.setState({ apiStatus: apiStatusConstants.failure })
     }
   }
@@ -51,7 +61,10 @@ class BookList extends Component {
   handleSearchChange = event => {
     const searchInputValue = event.target.value
     this.setState({ searchInputValue })
-    if (searchInputValue.trim() !== '') {
+
+    if (searchInputValue.trim() === '') {
+      this.fetchBooks() // Fetch all books again
+    } else {
       this.fetchBooks(searchInputValue)
     }
   }
@@ -78,14 +91,18 @@ class BookList extends Component {
         ))}
       </ul>
     ) : (
-        <div className='no-books'>
-      <p>No books found.</p></div>
+      <div className="no-books">
+        <p>No books found.</p>
+      </div>
     )
   }
 
   renderLoaderView = () => <Loader />
 
-  renderFailureView = () => <p>Something went wrong. Please try again.</p>
+  renderFailureView = () => (
+    <div className='failure-view-text'>
+    <p>Something went wrong. Please try again.</p></div>
+  )
 
   renderBooksContent = () => {
     const { apiStatus } = this.state
@@ -108,7 +125,6 @@ class BookList extends Component {
     return (
       <div className="booklist-main-container">
         <Header />
-
         <div className="search-box-wrapper">
           <div className="search-box">
             <SearchInput
@@ -125,7 +141,6 @@ class BookList extends Component {
               onChangePrice={this.handlePriceChange}
             />
           </div>
-
           <div className="right-panel">
             {this.renderBooksContent()}
           </div>

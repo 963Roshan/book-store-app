@@ -1,31 +1,69 @@
-.booklist-main-container {
-  padding: 20px;
-}
-
-.search-row {
-  margin: 20px 0;
-}
-
-.content-row {
+.book-details-layout {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  font-family: sans-serif;
 }
 
-.left-panel {
+.book-details-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.image-info-box {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+}
+
+.image-box {
   flex: 1;
-  min-width: 200px;
 }
 
-.right-panel {
-  flex: 3;
-  min-width: 300px;
+.book-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
 }
 
-.book-items-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
-  list-style: none;
-  padding: 0;
+.info-box {
+  flex: 1;
+}
+
+.subtitle {
+  font-style: italic;
+  margin: 8px 0;
+}
+
+.price {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.add-to-cart-btn {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.add-to-cart-btn.disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+.back-btn {
+  padding: 8px 16px;
+  background-color: transparent;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.desc-box {
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
 }
