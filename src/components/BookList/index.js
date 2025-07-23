@@ -3,40 +3,57 @@ import Header from '../Header'
 import SearchInput from '../SearchInput'
 import PriceRange from '../PriceRange'
 import BookItem from '../BookItem'
+import Loader from '../Loader'
 import './index.css'
 
-const sampleBooks = [
-  {
-    title: 'Designing Across Senses',
-    subtitle: 'A Multimodal Approach to Product Design',
-    isbn13: '9781491954249',
-    price: '$27.59',
-    image: 'https://itbook.store/img/books/9781491954249.png',
-  },
-  {
-    title: 'Web Scraping with Python, 2nd Edition',
-    subtitle: 'Collecting More Data from the Modern Web',
-    isbn13: '9781491985571',
-    price: '$33.99',
-    image: 'https://itbook.store/img/books/9781491985571.png',
-  },
-  {
-    title: 'Programming iOS 11',
-    subtitle: 'Dive Deep into Views, View Controllers, and Frameworks',
-    isbn13: '9781491999226',
-    price: '$59.17',
-    image: 'https://itbook.store/img/books/9781491999226.png',
-  },
-]
+const apiStatusConstants = {
+  initial: 'INITIAL',
+  inProgress: 'IN_PROGRESS',
+  success: 'SUCCESS',
+  failure: 'FAILURE',
+}
 
 class BookList extends Component {
   state = {
     searchInputValue: '',
-    priceRangeValue: 1000,
+    priceRangeValue: 100,
+    booksList: [],
+    apiStatus: apiStatusConstants.initial,
+  }
+
+  componentDidMount() {
+    this.fetchBooks('react')
+  }
+
+  fetchBooks = async searchTerm => {
+    this.setState({ apiStatus: apiStatusConstants.inProgress })
+    try {
+      const response = await fetch(`https://api.itbook.store/1.0/search/${searchTerm}`)
+      if (response.ok) {
+        const data = await response.json()
+        const formattedBooks = data.books.map(book => ({
+          title: book.title,
+          subtitle: book.subtitle,
+          isbn13: book.isbn13,
+          price: book.price,
+          image: book.image,
+          url: book.url,
+        }))
+        this.setState({ booksList: formattedBooks, apiStatus: apiStatusConstants.success })
+      } else {
+        this.setState({ apiStatus: apiStatusConstants.failure })
+      }
+    } catch (error) {
+      this.setState({ apiStatus: apiStatusConstants.failure })
+    }
   }
 
   handleSearchChange = event => {
-    this.setState({ searchInputValue: event.target.value })
+    const searchInputValue = event.target.value
+    this.setState({ searchInputValue })
+    if (searchInputValue.trim() !== '') {
+      this.fetchBooks(searchInputValue)
+    }
   }
 
   handlePriceChange = value => {
@@ -44,23 +61,49 @@ class BookList extends Component {
   }
 
   getFilteredBooks = () => {
-    const { searchInputValue, priceRangeValue } = this.state
-
-    return sampleBooks.filter(book => {
-      const searchText = searchInputValue.toLowerCase()
-      const titleMatch = book.title.toLowerCase().includes(searchText)
-      const subtitleMatch = book.subtitle.toLowerCase().includes(searchText)
-
+    const { booksList, priceRangeValue } = this.state
+    return booksList.filter(book => {
       const numericPrice = parseFloat(book.price.replace('$', ''))
-      const priceMatch = numericPrice <= priceRangeValue
-
-      return (titleMatch || subtitleMatch) && priceMatch
+      return numericPrice <= priceRangeValue
     })
+  }
+
+  renderBooksView = () => {
+    const filteredBooks = this.getFilteredBooks()
+
+    return filteredBooks.length > 0 ? (
+      <ul className="book-items-container">
+        {filteredBooks.map(book => (
+          <BookItem key={book.isbn13} bookData={book} />
+        ))}
+      </ul>
+    ) : (
+        <div className='no-books'>
+      <p>No books found.</p></div>
+    )
+  }
+
+  renderLoaderView = () => <Loader />
+
+  renderFailureView = () => <p>Something went wrong. Please try again.</p>
+
+  renderBooksContent = () => {
+    const { apiStatus } = this.state
+
+    switch (apiStatus) {
+      case apiStatusConstants.inProgress:
+        return this.renderLoaderView()
+      case apiStatusConstants.success:
+        return this.renderBooksView()
+      case apiStatusConstants.failure:
+        return this.renderFailureView()
+      default:
+        return null
+    }
   }
 
   render() {
     const { searchInputValue, priceRangeValue } = this.state
-    const filteredBooks = this.getFilteredBooks()
 
     return (
       <div className="booklist-main-container">
@@ -84,15 +127,7 @@ class BookList extends Component {
           </div>
 
           <div className="right-panel">
-            {filteredBooks.length > 0 ? (
-              <ul className="book-items-container">
-                {filteredBooks.map(book => (
-                  <BookItem key={book.isbn13} bookData={book} />
-                ))}
-              </ul>
-            ) : (
-              <p>No books found.</p>
-            )}
+            {this.renderBooksContent()}
           </div>
         </div>
       </div>
