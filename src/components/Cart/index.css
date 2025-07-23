@@ -1,0 +1,52 @@
+/* components/Cart/index.css */
+.cart-page {
+  padding: 20px;
+}
+
+.cart-header {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.cart-body {
+  display: flex;
+  gap: 20px;
+}
+
+.cart-left {
+  flex: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cart-right {
+  flex: 30%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f8f8f8;
+  height: fit-content;
+}
+
+.checkout-btn {
+  background-color: #0077cc;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.checkout-btn:hover {
+  background-color: #005fa3;
+}
+
+.empty-msg {
+  color: #777;
+  font-size: 16px;
+}
