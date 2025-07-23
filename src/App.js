@@ -8,7 +8,7 @@ import Checkout from './components/Checkout'
 import NotFound from './components/NotFound'
 import CartContext from './Context/CartContext'
 import OrderConfirmation from './components/OrderConfirmation'
-
+import ProtectedRoute from './components/ProtectedRoute'
 class App extends Component {
   state = {
     cartList: [],
@@ -95,8 +95,8 @@ class App extends Component {
           <Route exact path="/books" component={BookList} />
           <Route exact path="/books/:isbn13" component={BookDetails} />
           <Route exact path="/cart" component={Cart} />
-          <Route exact path="/checkout" component={Checkout} />
-          <Route exact path="/order-confirmation" component={OrderConfirmation} />
+          <ProtectedRoute exact path="/checkout" component={Checkout} />
+          <ProtectedRoute exact path="/order-confirmation" component={OrderConfirmation} />
           <Route exact path="/not-found" component={NotFound} />
           <Redirect to="/not-found" />
         </Switch>
