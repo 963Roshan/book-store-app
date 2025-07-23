@@ -47,6 +47,12 @@
 }
 
 .empty-msg {
-  color: #777;
-  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+  text-align: center;
+  font-size: 24px;
+  margin-top: 30px;
+  color: #666;
+  
 }

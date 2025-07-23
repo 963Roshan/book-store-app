@@ -14,11 +14,22 @@ class App extends Component {
   }
 
   addToCart = book => {
-    const { cartList } = this.state
-    const isAlreadyInCart = cartList.some(item => item.isbn13 === book.isbn13)
-    if (!isAlreadyInCart) {
-      this.setState({ cartList: [...cartList, book] })
-    }
+    this.setState(prevState => {
+      const existingItem = prevState.cartList.find(item => item.isbn13 === book.isbn13)
+      if (existingItem) {
+        return {
+          cartList: prevState.cartList.map(item =>
+            item.isbn13 === book.isbn13
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          ),
+        }
+      } else {
+        return {
+          cartList: [...prevState.cartList, { ...book, quantity: 1 }],
+        }
+      }
+    })
   }
 
   removeFromCart = id => {
@@ -31,6 +42,26 @@ class App extends Component {
     this.setState({ cartList: [] })
   }
 
+  increaseQuantity = id => {
+    this.setState(prevState => ({
+      cartList: prevState.cartList.map(item =>
+        item.isbn13 === id ? { ...item, quantity: item.quantity + 1 } : item
+      ),
+    }))
+  }
+
+  decreaseQuantity = id => {
+    this.setState(prevState => ({
+      cartList: prevState.cartList
+        .map(item =>
+          item.isbn13 === id && item.quantity > 1
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+        .filter(item => item.quantity > 0), // Optionally remove item when qty reaches 0
+    }))
+  }
+
   render() {
     const { cartList } = this.state
 
@@ -41,6 +72,8 @@ class App extends Component {
           addToCart: this.addToCart,
           removeFromCart: this.removeFromCart,
           clearCart: this.clearCart,
+          increaseQuantity: this.increaseQuantity,
+          decreaseQuantity: this.decreaseQuantity,
         }}
       >
         <Switch>
