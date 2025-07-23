@@ -1,31 +1,33 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { FaHome, FaBook, FaShoppingCart } from 'react-icons/fa';
+import { FaBook, FaShoppingCart } from 'react-icons/fa';
 import './index.css';
 
 class Header extends Component {
   render() {
     return (
-      <div className="toolbar-container">
-        <div className="logo">📚 BookStore</div>
-
-        <div className="icon-links">
-          <Link to="/" className="icon-link">
-            <FaHome className="d-xl-none" />
-            <span className="d-none d-xl-inline">Home</span>
-          </Link>
-
-          <Link to="/books" className="icon-link">
-            <FaBook className="d-xl-none" />
-            <span className="d-none d-xl-inline">Books</span>
-          </Link>
-
-          <Link to="/cart" className="icon-link">
-            <FaShoppingCart className="d-xl-none" />
-            <span className="d-none d-xl-inline">Cart</span>
-          </Link>
-        </div>
-      </div>
+      <nav className="header-container">
+        <Link to="/" className="logo-link">
+  <div className="logo">
+    <div className="logo-box">B</div>
+    <div className="logo-name">BookStore</div>
+  </div>
+        </Link>
+        <ul className="nav-menu">
+          <li>
+            <Link to="/books" className="nav-link">
+              <FaBook className="nav-icon" />
+              <span className="nav-text">Books</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/cart" className="nav-link">
+              <FaShoppingCart className="nav-icon" />
+              <span className="nav-text">Cart</span>
+            </Link>
+          </li>
+        </ul>
+      </nav>
     );
   }
 }

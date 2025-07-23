@@ -1,7 +1,7 @@
 .banner-container {
   text-align: center;
   padding: 80px 20px;
-  background-color: white;  /* fallback solid background */
+  background-color: rgb(244, 245, 244);  /* fallback solid background */
   color: black;
   border-radius: 8px;
   height: 100vh;
