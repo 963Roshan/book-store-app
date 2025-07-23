@@ -14,6 +14,19 @@ class App extends Component {
     cartList: [],
   }
 
+  componentDidMount() {
+    const savedCart = localStorage.getItem('cartList')
+    if (savedCart) {
+      this.setState({ cartList: JSON.parse(savedCart) })
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.cartList !== this.state.cartList) {
+      localStorage.setItem('cartList', JSON.stringify(this.state.cartList))
+    }
+  }
+
   addToCart = book => {
     this.setState(prevState => {
       const existingItem = prevState.cartList.find(item => item.isbn13 === book.isbn13)
@@ -59,7 +72,7 @@ class App extends Component {
             ? { ...item, quantity: item.quantity - 1 }
             : item
         )
-        .filter(item => item.quantity > 0), // Optionally remove item when qty reaches 0
+        .filter(item => item.quantity > 0),
     }))
   }
 
