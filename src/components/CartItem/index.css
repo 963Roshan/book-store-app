@@ -11,15 +11,21 @@
 
 .remove-icon {
   position: absolute;
-  top: 8px;
+  top: 12px;         /* moved slightly down */
   right: 12px;
   background: none;
   border: none;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
-  color: red;
+  color: gray;     /* softer red */
   cursor: pointer;
+  transition: color 0.2s ease;
 }
+
+.remove-icon:hover {
+  color: gray;     /* darker on hover */
+}
+
 
 .cart-item-body {
   display: flex;
@@ -73,4 +79,32 @@
   min-width: 24px;
   text-align: center;
   font-weight: bold;
+}
+
+/* ✅ Responsive for small screens */
+@media (max-width: 576px) {
+  .cart-item-body {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cart-item-image {
+    margin: 0 0 12px;
+    width: 80px;
+  }
+
+  .cart-item-details {
+    width: 100%;
+  }
+
+  .quantity-container {
+    justify-content: center;
+  }
+
+  .remove-icon {
+    font-size: 16px;
+    top: 4px;
+    right: 8px;
+  }
 }

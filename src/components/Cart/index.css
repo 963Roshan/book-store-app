@@ -54,5 +54,30 @@
   font-size: 24px;
   margin-top: 30px;
   color: #666;
-  
+}
+
+/* ✅ Only for small screens */
+@media (max-width: 576px) {
+  .cart-body {
+    flex-direction: column;
+  }
+
+  .cart-left,
+  .cart-right {
+    flex: none;
+    width: 100%;
+  }
+
+  .cart-header {
+    font-size: 22px;
+  }
+
+  .checkout-btn {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .empty-msg {
+    font-size: 20px;
+  }
 }

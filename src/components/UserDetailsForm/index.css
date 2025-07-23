@@ -24,6 +24,9 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  /* 💫 Added sky blue shadow */
+  box-shadow: 0 4px 12px rgba(0, 191, 255, 0.25);
 }
 
 .user-form input {

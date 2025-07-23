@@ -39,21 +39,40 @@ class BookDetails extends Component {
 
   renderSuccessView = () => {
     const { bookDetailsData, isAddedToCart } = this.state
-    const { title, subtitle, price, image, desc } = bookDetailsData
+    const {
+      title,
+      subtitle,
+      authors,
+      price,
+      image,
+      rating,
+      desc,
+    } = bookDetailsData
 
     return (
       <CartContext.Consumer>
         {value => {
           const { addToCart } = value
+          const { history } = this.props
 
           const handleAddToCart = () => {
             addToCart(bookDetailsData)
             this.setState({ isAddedToCart: true })
           }
 
+          const handleBuyNow = () => {
+            addToCart(bookDetailsData)
+            history.push("/cart")
+          }
+
           return (
             <div className="book-details-layout">
               <Header />
+              {/* Back Button at Top Left */}
+              <div className="back-btn-container">
+    <button className="back-btn" onClick={this.handleBack}>← Back</button>
+  </div>
+
               <div className="book-details-content">
                 <div className="image-info-box">
                   <div className="image-box">
@@ -62,17 +81,26 @@ class BookDetails extends Component {
                   <div className="info-box">
                     <h1>{title}</h1>
                     <p className="subtitle">{subtitle}</p>
+                    <p className="author"><strong>Author:</strong> {authors}</p>
                     <p className="price">{price}</p>
-                    <button
-                      disabled={isAddedToCart}
-                      onClick={handleAddToCart}
-                      className={`add-to-cart-btn ${isAddedToCart ? "disabled" : ""}`}
-                    >
-                      {isAddedToCart ? "Added" : "Add to Cart"}
-                    </button>
-                    <button onClick={this.handleBack} className="back-btn">Back</button>
+                    <p className="rating">⭐ {rating} / 5</p>
+
+                    <div className="action-buttons">
+                      <button
+                        disabled={isAddedToCart}
+                        onClick={handleAddToCart}
+                        className={`add-to-cart-btn ${isAddedToCart ? "disabled" : ""}`}
+                      >
+                        {isAddedToCart ? "Added" : "Add to Cart"}
+                      </button>
+
+                      <button onClick={handleBuyNow} className="buy-now-btn">
+                        Buy Now
+                      </button>
+                    </div>
                   </div>
                 </div>
+
                 <div className="desc-box">
                   <h2>Description</h2>
                   <p>{desc}</p>

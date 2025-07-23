@@ -1,32 +1,57 @@
 .banner-container {
   text-align: center;
   padding: 80px 20px;
-  background-color: rgb(244, 245, 244);  /* fallback solid background */
-  color: black;
-  border-radius: 8px;
+  background: linear-gradient(to right, #e0f7fa, #ffffff);
+  color: #023e8a;
+  border-radius: 16px;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+  animation: fadeIn 1.2s ease-in;
 }
 
 .banner-heading {
   font-size: 3rem;
   margin-bottom: 20px;
+  font-weight: 700;
+  color: #03045e;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .banner-description {
   font-size: 1.2rem;
   margin-bottom: 30px;
+  color: #0077b6;
 }
 
 .explore-button {
-  background-color: #ff6f61;
-  color: black;
+  background-color: #00b4d8;
+  color: white;
   border: none;
-  padding: 12px 24px;
+  padding: 14px 30px;
   font-size: 1rem;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 5px 15px rgba(0, 180, 216, 0.3);
 }
 
 .explore-button:hover {
-  background-color: #f37676;
+  background-color: #0096c7;
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

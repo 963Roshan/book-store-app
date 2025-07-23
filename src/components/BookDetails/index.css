@@ -15,15 +15,21 @@
   display: flex;
   flex-direction: row;
   gap: 32px;
+  flex-wrap: wrap;
 }
 
 .image-box {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%; /* <-- Important */
 }
+
 
 .book-image {
   width: 100%;
-  max-width: 500px;
+  max-width: 600px; /* increased from 500px */
   height: auto;
 }
 
@@ -42,28 +48,121 @@
   margin-bottom: 12px;
 }
 
-.add-to-cart-btn {
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  margin-right: 12px;
+/* Buttons */
+.add-to-cart-btn,
+.buy-now-btn {
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
   cursor: pointer;
+  margin-right: 16px;
+  margin-top: 12px;
 }
 
+/* Add to Cart button */
+.add-to-cart-btn {
+  background-color: #28b0ff;
+  border: none;
+  color: white;
+}
+
+/* Disabled state */
 .add-to-cart-btn.disabled {
-  background-color: gray;
+  background-color: #ccc;
   cursor: not-allowed;
 }
 
-.back-btn {
-  padding: 8px 16px;
+/* Buy Now transparent */
+.buy-now-btn {
   background-color: transparent;
-  border: 1px solid black;
-  cursor: pointer;
+  border: 2px solid #28b0ff;
+  color: #28b0ff;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.buy-now-btn:active {
+  background-color: #28b0ff;
+  color: white;
+}
+
+/* Back Button */
+.top-left-back-btn {
+  position: absolute;
+  top: -20px; /* moves part into header */
+  left: 30px;
+  padding: 10px 20px;
+  background-color: white;
+  border: 1px solid #0077cc;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #0077cc;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+}
+
+
+/* Description */
 .desc-box {
   border-top: 1px solid #ccc;
   padding-top: 20px;
 }
+
+.buy-link {
+  display: inline-block;
+  margin: 10px 0;
+  color: #0a7adb;
+  font-weight: bold;
+}
+
+.pdf-box ul {
+  list-style-type: square;
+  padding-left: 20px;
+}
+
+.pdf-box a {
+  color: #0077cc;
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .image-info-box {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .book-image {
+    width: 100%;
+    max-width: 90%;
+  }
+
+  .top-left-back-btn {
+    top: 60px;
+    left: 15px;
+  }
+}
+/* Button container below header, aligned left */
+.back-btn-container {
+  padding: 10px 20px;
+}
+
+/* Back button styling */
+.back-btn {
+  padding: 10px 18px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: white;
+  color: #0077cc;
+  border: 2px solid #0077cc;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #0077cc;
+  color: white;
+}
+

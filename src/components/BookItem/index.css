@@ -3,7 +3,6 @@
   color: inherit;
   display: block;
 }
-
 .book-card {
   border: 1px solid #ddd;
   padding: 16px;
@@ -11,7 +10,17 @@
   border-radius: 8px;
   background-color: #fff;
   height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin: 16px 0; /* top and bottom spacing only */
 }
+
+
+
+.book-card:hover {
+  transform: scale(1.01); /* very slight zoom */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* softer shadow */
+}
+
 
 .book-image {
   width: 100%;
