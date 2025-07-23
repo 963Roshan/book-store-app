@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom"
 import Loader from "../Loader"
 import Header from "../Header"
 import ErrorMessage from "../ErrorMessage"
+import CartContext from "../../Context/CartContext"
 import "./index.css"
 
 class BookDetails extends Component {
@@ -31,11 +32,6 @@ class BookDetails extends Component {
     }
   }
 
-  handleAddToCart = () => {
-    this.setState({ isAddedToCart: true })
-    // Optional: Add cart logic here
-  }
-
   handleBack = () => {
     const { history } = this.props
     history.goBack()
@@ -46,33 +42,46 @@ class BookDetails extends Component {
     const { title, subtitle, price, image, desc } = bookDetailsData
 
     return (
-      <div className="book-details-layout">
-        <Header />
-        <div className="book-details-content">
-          <div className="image-info-box">
-            <div className="image-box">
-              <img src={image} alt={title} className="book-image" />
+      <CartContext.Consumer>
+        {value => {
+          const { addToCart } = value
+
+          const handleAddToCart = () => {
+            addToCart(bookDetailsData)
+            this.setState({ isAddedToCart: true })
+          }
+
+          return (
+            <div className="book-details-layout">
+              <Header />
+              <div className="book-details-content">
+                <div className="image-info-box">
+                  <div className="image-box">
+                    <img src={image} alt={title} className="book-image" />
+                  </div>
+                  <div className="info-box">
+                    <h1>{title}</h1>
+                    <p className="subtitle">{subtitle}</p>
+                    <p className="price">{price}</p>
+                    <button
+                      disabled={isAddedToCart}
+                      onClick={handleAddToCart}
+                      className={`add-to-cart-btn ${isAddedToCart ? "disabled" : ""}`}
+                    >
+                      {isAddedToCart ? "Added" : "Add to Cart"}
+                    </button>
+                    <button onClick={this.handleBack} className="back-btn">Back</button>
+                  </div>
+                </div>
+                <div className="desc-box">
+                  <h2>Description</h2>
+                  <p>{desc}</p>
+                </div>
+              </div>
             </div>
-            <div className="info-box">
-              <h1>{title}</h1>
-              <p className="subtitle">{subtitle}</p>
-              <p className="price">{price}</p>
-              <button
-                disabled={isAddedToCart}
-                onClick={this.handleAddToCart}
-                className={`add-to-cart-btn ${isAddedToCart ? "disabled" : ""}`}
-              >
-                {isAddedToCart ? "Added" : "Add to Cart"}
-              </button>
-              <button onClick={this.handleBack} className="back-btn">Back</button>
-            </div>
-          </div>
-          <div className="desc-box">
-            <h2>Description</h2>
-            <p>{desc}</p>
-          </div>
-        </div>
-      </div>
+          )
+        }}
+      </CartContext.Consumer>
     )
   }
 
