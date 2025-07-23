@@ -1,5 +1,6 @@
 // components/UserDetailsForm/index.js
 import { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import './index.css'
 
 class UserDetailsForm extends Component {
@@ -22,9 +23,7 @@ class UserDetailsForm extends Component {
     if (!firstName || !lastName || !email || !mobile) {
       this.setState({ errorMsg: 'Please fill in all fields' })
     } else {
-      this.setState({ isFormSubmitted: true }, () => {
-        this.props.history.push('/order-confirmation')
-      })
+      this.setState({ isFormSubmitted: true })
     }
   }
 
@@ -46,7 +45,12 @@ class UserDetailsForm extends Component {
   }
 
   render() {
-    const { firstName, lastName, email, mobile, errorMsg } = this.state
+    const { firstName, lastName, email, mobile, errorMsg, isFormSubmitted } = this.state
+
+    if (isFormSubmitted) {
+      return (this.props.history.push('/order-confirmation'))
+
+    }
 
     return (
       <form className="user-form" onSubmit={this.handleSubmit}>
@@ -56,13 +60,11 @@ class UserDetailsForm extends Component {
         <input name="email" value={email} onChange={this.handleChange} placeholder="Email" type="email" />
         <input name="mobile" value={mobile} onChange={this.handleChange} placeholder="Mobile No." type="tel" />
         {errorMsg && <p className="error">{errorMsg}</p>}
-
         {this.renderSummary()}
-
         <button type="submit" className="place-order-button">Place Order</button>
       </form>
     )
   }
 }
 
-export default UserDetailsForm
+export default withRouter(UserDetailsForm)

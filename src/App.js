@@ -7,6 +7,7 @@ import Cart from './components/Cart'
 import Checkout from './components/Checkout'
 import NotFound from './components/NotFound'
 import CartContext from './Context/CartContext'
+import OrderConfirmation from './components/OrderConfirmation'
 
 class App extends Component {
   state = {
@@ -82,6 +83,7 @@ class App extends Component {
           <Route exact path="/books/:isbn13" component={BookDetails} />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/checkout" component={Checkout} />
+          <Route exact path="/order-confirmation" component={OrderConfirmation} />
           <Route exact path="/not-found" component={NotFound} />
           <Redirect to="/not-found" />
         </Switch>

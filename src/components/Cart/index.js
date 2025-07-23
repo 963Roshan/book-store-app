@@ -3,6 +3,7 @@ import { Component } from "react"
 import CartItem from "../CartItem"
 import CartContext from "../../Context/CartContext"
 import Header from "../Header"
+import { Link } from "react-router-dom"
 import "./index.css"
 
 class Cart extends Component {
@@ -38,7 +39,16 @@ class Cart extends Component {
               <h3>Order Summary</h3>
               <p>Total Items: {totalQuantity}</p>
               <p>Total Price: ${total.toFixed(2)}</p>
-              <button className="checkout-btn">Checkout</button>
+              {total > 0 ? (
+  <Link to="/checkout">
+    <button className="checkout-btn">Checkout</button>
+  </Link>
+) : (
+  <button className="checkout-btn" disabled>
+    Checkout
+  </button>
+)}
+
             </div>
           </div>
         </div>
