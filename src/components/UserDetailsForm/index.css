@@ -1,0 +1,55 @@
+/* components/Checkout/index.css */
+.checkout-container {
+  padding: 20px;
+  background-color: #e0f7ff;
+  min-height: 100vh;
+}
+
+.back-button {
+  background-color: transparent;
+  border: none;
+  color: #0077b6;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+/* components/UserDetailsForm/index.css */
+.user-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.user-form input {
+  padding: 10px;
+  border: 1px solid #90e0ef;
+  border-radius: 5px;
+}
+
+.place-order-button {
+  background-color: #0077b6;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+.order-summary {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #caf0f8;
+  background-color: #f1fcff;
+  border-radius: 5px;
+}
