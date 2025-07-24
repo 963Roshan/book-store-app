@@ -77,21 +77,25 @@ A full-stack React application that allows users to browse, search, and purchase
 
 ---
 
-## 🚀 Demo 
-
 > 
-- [Live Demo](https://sr-book-store-app.vercel.app/)
+## 🌐 Live Previews
+
+| Platform | Link |
+|----------|------|
+| 🔵 Vercel | [Visit Site](https://sr-book-store-app.vercel.app/) |
+| 🟢 Netlify | [Visit Site](https://sr-bookstore-app.netlify.app/) |
 
 ----------------------------------------------------
 - ## 📸 Screenshot
 
 ### Home Page
-![Home Page](public/demo/homepage.png)
+![Home Page](https://res.cloudinary.com/deense0dl/image/upload/v1753337127/Screenshot_2025-07-24_110223_hmtsnw.png)
 
 ### BookList Page
-![BookList Page](public/demo/booklistpage.png)
+![BookList Page](https://res.cloudinary.com/deense0dl/image/upload/v1753337143/Screenshot_2025-07-24_110317_wnt5j7.png)
 
-
+### Cart Page
+![Cart Page](https://res.cloudinary.com/deense0dl/image/upload/v1753337398/Screenshot_2025-07-24_113937_bphjrz.png)
 ---
 
 ## 🛠 Installation
