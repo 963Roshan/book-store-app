@@ -69,247 +69,134 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+# 📚 ReactJS Full Stack Interactive Bookstore Application
 
-# Title
-ReactJS Full Stack interactive Bookstore application 
+## 📖 Description
 
-## Objective
-
-The application should allow users to browse and search for books, view book details, add books to a shopping cart, and place an order.
-
-## Tech Stack
-
-Use ReactJS, React Router, Redux or React Context API, CSS or CSS frameworks, Git, and GitHub for hosting the repository
-
-## Completion Instructions
-
-### Functionality
-
-#### Must Have
-
-1. Build a ReactJS application with multiple pages/components, including Home, Book Listing, Book Details, Shopping Cart, and Checkout pages.
-
-2. Implement features such as book search, book filtering, add to cart, remove from cart, and order placement.
-
-📄 Pages
-
-- Home
-
-- Book Listing
-
-- Book Details
-
-- Shopping Cart
-
-- Checkout
-
-- Order Confirmation
-
-🔗 Navigation
-
-- Home → Book Listing
-
-- Book Listing → Book Details
-
-- Book Details → Add to Cart → Shopping Cart
-
-- Shopping Cart → Checkout
-
-📄 Pages
-
-Page: Home
-Page Details: 
-
-Header - links for pages Home, Book List, Cart
-Banner - Heading, description, and “Explore Books” Button
-
-Navigation: Book Listing
-
-Page: Book Listing
-Page Details: 
-
-Header -  links for pages Home, Book List, Cart, Book Items (title, subtitle, image, price ), Search (by title, author), Filter (by Price)
-
-Navigation:
-"Book List" link in Header
-"Explore Books" Button
-"Back" Button in Book Details Page
-
-Navigation: Book Details
-
-Page: 
-Page Details: 
-
-Book detailed Information (title, subtitle, image, description, price)
-
-"Add to cart" Button
-"Back" button
-
-Navigation: Each Book Item in Book List Page
-
-Page: Cart
-Page Details:
-
-Cart Items (title, subtitle, image, price),
-"Remove" Button
-Order Summary
-"Checkout" Button
-
-Navigation: 
-
-"Cart" link in Header
-"Back" Button in Checkout Page
-
-Page: Checkout
-Page Details: 
-
-"Back" Button,
-Order Form (Personal Details, Summary, Place Order)
-
-Navigation: Checkout in Cart
-
-Page: Order Confirmation
-Page Details: Order Summary, Success Message
-
-Navigation: Home
-
-#### Nice to Have
-
-Include implementing user authentication
-
-### Guidelines to develop a project
-
-#### Must Have
-
-* USE GITHUB
-
-   *  Create a new public repository on GitHub for the assignment.
-   *  Commit your code regularly and include clear commit messages.
-   *  Include a README file explaining the project setup, usage     instructions, and any additional information. 
-   * Ensure the repository is well-organized and easy to navigate.
-
-#### Nice to Have
-
-    Unit tests, and deploying the application on a hosting platform
-
-### Submission Instructions
-
-#### Must Have
-
- Github Repository
-
-#### Nice to Have
-
-Deploying the application on a hosting platform
-
-
-### Technical Details
-
-
-Routes
-
-| Page        | Route      | Path         |
-|-------------|------------|--------------|
-| Home        | Home       | /            |
-| Book List   | Book List  | /books        |
-| Book Details| Book Details| /books/:id   |
-| Cart        | Cart       | /cart        |
-| Checkout    | Checkout   | /checkout    |
-| Not Found   | Not Found  | /not-found   |
-
-
-# Routes & Components
+A full-stack React application that allows users to browse, search, and purchase books. Users can view book details, manage their cart, and complete a checkout process. This project demonstrates interactive UI, routing, state management, and API integration using a clean architecture.
 
 ---
 
-## Home
+## 🚀 Demo 
 
-| Component | Details | State | API (IT Bookstore) |
-| --------- | ------- | ----- | ------------------ |
-| Home | Heading, Description, and "ExploreBooks" button | - | - |
-| Header | Links for pages: Home, Book List, Cart | - | - |
+> 
+- [Live Demo](https://sr-book-store-app.vercel.app/)
+
+----------------------------------------------------
+- ## 📸 Screenshot
+
+### Home Page
+![Home Page](public/demo/homepage.png)
+
+### BookList Page
+![BookList Page](public/demo/booklistpage.png)
+
 
 ---
 
-## Book List
+## 🛠 Installation
 
-| Component    | Details | State | API (IT Bookstore) |
-| ------------ | ------- | ----- | ------------------ |
-| BookList     | Displays list of books | apiStatus, booksData, priceRangeValue | `/new` |
-| Header       | Links for pages: Home, Book List, Cart | - | - |
-| SearchInput  | Search by title, author | searchInputValue | `/search/{query}` |
-| PriceRange   | Filter by price | - | - |
-| BookItem     | Book Items: title, subtitle, image, price | - | - |
-| Loader       | Loader component | - | - |
-| ErrorMessage | Error display | - | - |
+```bash
+# Clone the repository
+git clone https://github.com/your-username/bookstore-app.git
 
----
+# Navigate into the directory
+cd bookstore-app
 
-## Book Details
+# Install dependencies
+npm install
 
-| Component    | Details | State | API (IT Bookstore) |
-| ------------ | ------- | ----- | ------------------ |
-| BookDetails  | Book detailed Information: image, title, subtitle, price, description, “Add to cart” Button, “Back” button | apiStatus, bookDetailsData | `/books/{isbn}` |
-| Header       | Links for pages: Home, Book List, Cart | - | - |
-| Loader       | Loader component | - | - |
-| ErrorMessage | Error display | - | - |
+# Start the development server
+npm start
+```
 
 ---
 
-## Cart
+## 💡 Usage
 
-| Component | Details | State | API (IT Bookstore) |
-| --------- | ------- | ----- | ------------------ |
-| Cart      | Cart Items, “Remove” Button, Order Summary, “Checkout” Button | (Context Consumer) | - |
-| Header    | Links for pages: Home, Book List, Cart | - | - |
-| CartItem  | Book Detailed Info: image, title, subtitle, price, description | (Context Consumer) | - |
-
----
-
-## Checkout
-
-| Component       | Details | State | API (IT Bookstore) |
-| --------------- | ------- | ----- | ------------------ |
-| Checkout        | “Back” button | (Context Consumer) | - |
-| UserDetailsForm | Order Form - Personal Details: First Name, Last Name, Email, Mobile No., Place Order Button, Order Summary | userDetails, isFormSubmitted | - |
+- Browse the home page and explore the latest books
+- Search for books by title or author
+- Filter books by price range
+- View detailed information about a book
+- Add/remove books from the shopping cart
+- Proceed to checkout and place an order
 
 ---
 
-## Not Found
+## ✨ Features
 
-| Component | Details | State | API (IT Bookstore) |
-| --------- | ------- | ----- | ------------------ |
-| NotFound  | Page Not Found | - | - |
-| Header    | Links for pages: Home, Book List, Cart | - | - |
+- 🔍 Book search and filtering
+- 🛒 Add to cart & remove from cart
+- 📘 Book details view
+- 📦 Checkout and order confirmation
+- 🔁 Route-based navigation using React Router
+- 💾 Persistent cart state using Context API
+- ✅ Form validation for user details
 
 ---
 
-## App
+## 🧰 Technologies Used
 
-| Component | Details | State | API (IT Bookstore) |
-| --------- | ------- | ----- | ------------------ |
-| App       | Root component, Context Provider | cartList (Context Provider), Context: cartList, addToCart, deleteFromCart | - |
+- ⚛️ **ReactJS**
+- 🧭 **React Router DOM**
+- 📦 **React Context API**
+- 💅 **CSS3**
+- 🧪 **react-loader-spinner**
+- 🎚 **rc-slider**
+- 🧩 **react-icons**
+- 🔗 **IT Bookstore API**: [https://api.itbook.store](https://api.itbook.store)
 
+---
 
-## Resources
+## 📁 Pages & Routes
 
-### Design files
+| Page               | Route           |
+|--------------------|-----------------|
+| Home               | `/`             |
+| Book List          | `/books`        |
+| Book Details       | `/books/:isbn13`|
+| Cart               | `/cart`         |
+| Checkout           | `/checkout`     |
+| Order Confirmation | `/order-success`|
+| Not Found          | `/not-found`    |
 
-Home, Book List, Book Details, Shopping Cart, Checkout
+---
 
-Referance : https://www.crossword.in
+## 🧱 Component Overview
 
+### 🔹 Home
+- Header with navigation links
+- Banner and CTA to explore books
 
-### APIS
+### 🔹 Book Listing
+- Book list view
+- Search bar
+- Price filter
+- Book item cards
 
-Books, Book Details, Search, Filter
+### 🔹 Book Details
+- Book cover, description, and pricing
+- “Add to Cart” and “Buy Now” buttons
 
-Reference: https://api.itbook.store/
+### 🔹 Cart
+- List of added books
+- Remove item functionality
+- Total summary & Checkout button
 
-### Third-party packages
+### 🔹 Checkout
+- User form (First Name, Last Name, Email, Mobile)
+- Order summary
+- Submit order button
 
-React Router (react-router-dom)
-Icons: react-icons
-Loader: react-loader-spinner
-Range Slider: rc-slider
+### 🔹 Order Confirmation
+- Success message with ordered books
+
+---
+
+## 🔗 Resources
+
+- 📚 IT Bookstore API: https://api.itbook.store
+- 🎨 UI Inspiration: https://www.crossword.in
+
+---
 
